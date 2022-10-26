@@ -1,0 +1,56 @@
+<!Doctype html>
+<html dir="rtl" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>معکوس ساعت
+        </title>
+<style>
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+#demo{
+    font-size: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    background: aqua;
+    padding: 5px 20px;
+    color: rgb(247, 9, 9);
+    border-radius: 10px;
+
+}
+
+</style>
+    </head>
+    <body>
+        <p id="demo"></p>
+
+        <script>
+            var countDate = new Date("2025-10-20 23:59:59").getTime();
+            
+            var x = setInterval(function(){
+                var now = new Date().getTime();
+                
+                var distans = countDate - now;
+
+                
+                var hours = Math.floor((distans % (1000 * 60 * 60 * 24)) /(1000 * 60 * 60));
+                var minutes = Math.floor((distans % (1000 * 60 * 60 )) /(1000 * 60 ));
+                var seconds = Math.floor((distans % (1000 * 60 )) /(1000));
+
+
+
+                document.getElementById("demo").innerHTML= hours + ":" + minutes + ":" + seconds + "";
+                 
+                if(distans < 0){
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "تمام";
+                }
+            },1000)
+
+           
+        </script>
+
+    </body>
+</html>
